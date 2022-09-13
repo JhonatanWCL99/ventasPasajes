@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\VentaPasajeController;
+use App\Http\Controllers\ViajeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +28,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource('/ventasPasajes',VentaPasajeController::class);
+Route::resource('/viajes',ViajeController::class);

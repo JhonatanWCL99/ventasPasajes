@@ -15,6 +15,10 @@ class CreateChoferesTable extends Migration
     {
         Schema::create('choferes', function (Blueprint $table) {
             $table->id();
+            $table->integer('licencia_conducir');
+            $table->unsignedBigInteger('persona_id');
+
+            $table->foreign('persona_id')->on('personas')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

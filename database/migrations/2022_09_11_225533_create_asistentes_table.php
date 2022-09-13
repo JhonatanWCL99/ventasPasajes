@@ -15,6 +15,10 @@ class CreateAsistentesTable extends Migration
     {
         Schema::create('asistentes', function (Blueprint $table) {
             $table->id();
+            $table->string('cargo');
+
+            $table->unsignedBigInteger('persona_id');
+            $table->foreign('persona_id')->on('personas')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

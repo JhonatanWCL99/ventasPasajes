@@ -15,6 +15,9 @@ class CreatePasajerosTable extends Migration
     {
         Schema::create('pasajeros', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('persona_id');
+            $table->foreign('persona_id')->on('personas')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

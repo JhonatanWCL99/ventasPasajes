@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsientosTable extends Migration
+class CreateViajesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,17 @@ class CreateAsientosTable extends Migration
      */
     public function up()
     {
-        Schema::create('asientos', function (Blueprint $table) {
+        Schema::create('viajes', function (Blueprint $table) {
             $table->id();
-            $table->string('color');
-            $table->char('estado');
-            $table->unsignedBigInteger('bus_id');
-            $table->foreign('bus_id')->on('buses')->references('id');
+            $table->date('fecha_salida');
+            $table->time('hora_salida');
 
+            $table->char('estado');
+
+            $table->unsignedBigInteger('chofer_id');
+            $table->unsignedBigInteger('bus_id');
+            $table->foreign('chofer_id')->on('choferes')->references('id');
+            $table->foreign('bus_id')->on('buses')->references('id');
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ class CreateAsientosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asientos');
+        Schema::dropIfExists('viajes');
     }
 }

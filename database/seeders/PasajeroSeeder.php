@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Pasajero;
 
 class PasajeroSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class PasajeroSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Pasajero::factory(10)->create();
     }
 }

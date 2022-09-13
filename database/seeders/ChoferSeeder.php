@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Chofer;
 
 class ChoferSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class ChoferSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Chofer::factory(5)->create();
     }
 }

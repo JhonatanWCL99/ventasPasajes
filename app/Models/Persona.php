@@ -10,7 +10,7 @@ class Persona extends Model
     use HasFactory;
 
     protected $table = 'personas';
-    protected $fillable = ['nombre','apellido','ci','fecha_nacimiento','direccion'];
+    protected $fillable = ['nombre','apellido','ci','fecha_nacimiento','direccion','genero'];
 
     public function choferes(){
         return $this->hasOne(Chofer::class);

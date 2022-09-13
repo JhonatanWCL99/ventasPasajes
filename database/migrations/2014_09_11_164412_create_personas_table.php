@@ -20,6 +20,7 @@ class CreatePersonasTable extends Migration
             $table->integer('ci');
             $table->date('fecha_nacimiento');
             $table->string('direccion');
+            $table->string('genero');
 
 
             $table->timestamps();

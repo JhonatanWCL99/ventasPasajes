@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Asistente;
 use Illuminate\Database\Seeder;
 
 class AsistenteSeeder extends Seeder
@@ -13,6 +14,6 @@ class AsistenteSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Asistente::factory(5)->create();
     }
 }

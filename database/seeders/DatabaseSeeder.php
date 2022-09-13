@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\PersonaSeeder;
+use Database\Seeders\AsistenteSeeder;
+use Database\Seeders\ChoferSeeder;
+use Database\Seeders\PasajeroSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +18,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(PersonaSeeder::class);
+        $this->call(AsistenteSeeder::class);
+        $this->call(ChoferSeeder::class);
+        $this->call(PasajeroSeeder::class);
     }
 }

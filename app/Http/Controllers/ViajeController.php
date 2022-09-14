@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bus;
 use App\Models\Chofer;
 use App\Models\Ruta;
+use App\Models\Viaje;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,16 @@ class ViajeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $viaje = new Viaje();
+        $viaje->fecha_salida = $request->fecha_salida;
+        $viaje->hora_salida = $request->hora_salida;
+        $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido 
+        $viaje->chofer_id =  $request->chofer;  
+        $viaje->bus_id =  $request->bus;  
+        $viaje->ruta_id =  $request->ruta;  
+        $viaje->save();  
+
+        return redirect()->route('viajes.index');
     }
 
     /**

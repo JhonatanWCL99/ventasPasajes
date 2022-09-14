@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bus;
 use App\Models\Chofer;
+use App\Models\Ruta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,8 @@ class ViajeController extends Controller
         $fecha = Carbon::now()->toDateString();
         $choferes = Chofer::all();
         $buses = Bus::where('estado','A')->get();
-        return view('viajes.create',compact('choferes','buses','fecha'));
+        $rutas = Ruta::all();
+        return view('viajes.create',compact('choferes','buses','rutas','fecha'));
     }
 
     /**

@@ -9,10 +9,10 @@ class Ruta extends Model
 {
     use HasFactory;
     protected $table = 'rutas';
-    protected $fillable = ['lugar_origen','lugar_llegada','viaje_id','ciudad_id'];
+    protected $fillable = ['lugar_origen','lugar_llegada','ciudad_id'];
 
-    public function viaje(){
-        return $this->belongsTo(Viaje::class);
+    public function viajes(){
+        return $this->hasMany(Viaje::class);
     }
 
     public function ciudad(){

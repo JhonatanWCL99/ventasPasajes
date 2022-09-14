@@ -21,9 +21,11 @@ class ChoferFactory extends Factory
      */
     public function definition()
     {
+
         $persona = Persona::all()->random();
         return [
             'licencia_conducir' =>$this->faker->numberBetween(20000,30000 ),
+            'fecha_caducidad'=>$this->faker->dateTimeBetween('2021-01-01', 'now'),
             'persona_id' => $persona->id
         ];
     }

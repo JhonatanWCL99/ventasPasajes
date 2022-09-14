@@ -10,7 +10,7 @@ class Chofer extends Model
 {
     use HasFactory;
     protected $table = 'choferes';
-    protected $fillable = ['licencia_conducir','persona_id'];
+    protected $fillable = ['licencia_conducir','fecha_caducidad','persona_id'];
 
     public function persona(){
         return $this->belongsTo(Persona::class);

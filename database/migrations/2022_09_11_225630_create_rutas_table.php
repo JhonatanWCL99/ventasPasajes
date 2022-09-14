@@ -17,10 +17,10 @@ class CreateRutasTable extends Migration
             $table->id();
             $table->string('lugar_origen');
             $table->string('lugar_llegada');
-            $table->unsignedBigInteger('viaje_id');
+
             $table->unsignedBigInteger('ciudad_id');
 
-            $table->foreign('viaje_id')->on('viajes')->references('id');
+
             $table->foreign('ciudad_id')->on('ciudades')->references('id');
             $table->timestamps();
         });

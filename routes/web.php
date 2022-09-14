@@ -3,6 +3,7 @@
 use App\Http\Controllers\VentaPasajeController;
 use App\Http\Controllers\ViajeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ViajeController;
 
 /*
 |--------------------------------------------------------------------------

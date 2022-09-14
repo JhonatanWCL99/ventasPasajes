@@ -10,7 +10,7 @@ class Viaje extends Model
     use HasFactory;
 
     protected $table = 'viajes';
-    protected $fillable = ['fecha_salida','hora_salida','estado','chofer_id','bus_id'];
+    protected $fillable = ['fecha_salida','hora_salida','estado','chofer_id','bus_id','ruta_id'];
 
     /* Relacion N a M */
     public function asistentes(){
@@ -26,8 +26,8 @@ class Viaje extends Model
     }
 
 
-    public function rutas(){
-        return $this->hasMany(Ruta::class);
+    public function ruta(){
+        return $this->belongsTo(Ruta::class);
     }
 
     public function detalles_ventas(){

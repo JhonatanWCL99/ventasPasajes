@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold justify-center flex text-xl text-gray-800 leading-tight">
-            Registro de Nuevo Viaje "FLOTA MARISCAL S.C"
+            Registro de Nuevo Viaje
         </h2>
     </x-slot>
 

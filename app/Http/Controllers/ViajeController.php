@@ -18,7 +18,9 @@ class ViajeController extends Controller
      */
     public function index()
     {
-        //
+        $viajes = Viaje::all();
+
+        return view('viajes.index', compact('viajes'));
     }
 
     /**
@@ -30,9 +32,9 @@ class ViajeController extends Controller
     {
         $fecha = Carbon::now()->toDateString();
         $choferes = Chofer::all();
-        $buses = Bus::where('estado','A')->get();
+        $buses = Bus::where('estado', 'A')->get();
         $rutas = Ruta::all();
-        return view('viajes.create',compact('choferes','buses','rutas','fecha'));
+        return view('viajes.create', compact('choferes', 'buses', 'rutas', 'fecha'));
     }
 
     /**
@@ -47,10 +49,10 @@ class ViajeController extends Controller
         $viaje->fecha_salida = $request->fecha_salida;
         $viaje->hora_salida = $request->hora_salida;
         $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido 
-        $viaje->chofer_id =  $request->chofer;  
-        $viaje->bus_id =  $request->bus;  
-        $viaje->ruta_id =  $request->ruta;  
-        $viaje->save();  
+        $viaje->chofer_id =  $request->chofer;
+        $viaje->bus_id =  $request->bus;
+        $viaje->ruta_id =  $request->ruta;
+        $viaje->save();
 
         return redirect()->route('viajes.index');
     }
@@ -63,7 +65,6 @@ class ViajeController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -74,7 +75,11 @@ class ViajeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $viaje = Viaje::find($id);
+        $choferes = Chofer::all();
+        $buses = Bus::where('estado', 'A')->get();
+        $rutas = Ruta::all();
+        return view('viajes.edit', compact('viaje', 'choferes', 'buses', 'rutas'));
     }
 
     /**
@@ -86,7 +91,16 @@ class ViajeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $viaje = Viaje::find($id);
+        $viaje->fecha_salida = $request->fecha_salida;
+        $viaje->hora_salida = $request->hora_salida;
+        $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido 
+        $viaje->chofer_id =  $request->chofer;
+        $viaje->bus_id =  $request->bus;
+        $viaje->ruta_id =  $request->ruta;
+        $viaje->save();
+
+        return redirect()->route('viajes.index');
     }
 
     /**
@@ -97,6 +111,10 @@ class ViajeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $viaje = Viaje::find($id);
+
+        $viaje->delete();
+
+        return redirect()->route('viajes.index');
     }
 }

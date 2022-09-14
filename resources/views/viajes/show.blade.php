@@ -50,7 +50,7 @@
 
 
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center">
-            <p class="text-gray-700 uppercase"><span class="font-semibold">Nro de Viaje:</span>
+            <p class="text-gray-700 uppercase"><span class="font-semibold">Ruta del Viaje:</span>
                 Viaje-{{  $viaje->ruta->lugar_origen}}</p>
         </div>
 

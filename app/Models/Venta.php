@@ -9,7 +9,7 @@ class Venta extends Model
 {
     use HasFactory;
 
-    protected $table= 'ventas';
+    protected $table= 'ventas_pasajes';
     protected $fillable = ['fecha_venta','hora_venta','total','user_id','pasajero_id'];
 
     public function user(){

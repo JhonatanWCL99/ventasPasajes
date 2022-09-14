@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AsistenteController;
+use App\Http\Controllers\ChoferController;
 use App\Http\Controllers\VentaPasajeController;
 use App\Http\Controllers\ViajeController;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +33,6 @@ Route::middleware([
 
 Route::resource('ventasPasajes',VentaPasajeController::class);
 Route::resource('viajes',ViajeController::class);
+Route::resource('choferes',ChoferController::class);
+Route::resource('asistentes',AsistenteController::class);
+

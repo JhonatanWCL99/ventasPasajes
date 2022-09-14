@@ -45,10 +45,28 @@ class ViajeController extends Controller
      */
     public function store(Request $request)
     {
+        $rules =[
+            'fecha_salida' => 'required',
+            'hora_salida' => 'required',
+            'chofer' =>'required',
+            'bus' =>'required',
+            'ruta' =>'required'
+        ];
+
+        $messages =[
+            'fecha_salida.required' => 'Debe colocar una fecha de salida',
+            'hora_salida.required' => 'Debe colocar una hora de  salida',
+            'chofer.required' => 'Debe seleccionar un Chofer',
+            'bus.required' => 'Debe seleccionar un Bus',
+            'ruta.required' => 'Debe seleccionar una Ruta',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $viaje = new Viaje();
         $viaje->fecha_salida = $request->fecha_salida;
         $viaje->hora_salida = $request->hora_salida;
-        $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido 
+        $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido
         $viaje->chofer_id =  $request->chofer;
         $viaje->bus_id =  $request->bus;
         $viaje->ruta_id =  $request->ruta;
@@ -65,6 +83,10 @@ class ViajeController extends Controller
      */
     public function show($id)
     {
+        $fecha = Carbon::now()->toDateString();
+        $viaje = Viaje::find($id);
+
+        return view('viajes.show',compact('viaje','fecha'));
     }
 
     /**
@@ -75,6 +97,7 @@ class ViajeController extends Controller
      */
     public function edit($id)
     {
+
         $viaje = Viaje::find($id);
         $choferes = Chofer::all();
         $buses = Bus::where('estado', 'A')->get();
@@ -94,7 +117,7 @@ class ViajeController extends Controller
         $viaje = Viaje::find($id);
         $viaje->fecha_salida = $request->fecha_salida;
         $viaje->hora_salida = $request->hora_salida;
-        $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido 
+        $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido
         $viaje->chofer_id =  $request->chofer;
         $viaje->bus_id =  $request->bus;
         $viaje->ruta_id =  $request->ruta;

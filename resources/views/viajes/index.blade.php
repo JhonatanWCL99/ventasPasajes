@@ -22,7 +22,9 @@
                     </tr>
                     @foreach ($viajes as $key => $viaje)
                     <tr>
-                        <td class="border text-center">{{ $viaje->id }}</td>
+                        <td  class="text-center">
+                            <a href="{{route('viajes.show', $viaje->id)}}">{{$viaje->id}} </a>
+                        </td>
                         <td class="border px-4 py-2 text-center">{{ $viaje->fecha_salida }}</td>
                         <td class="border px-4 py-2 text-center">{{ $viaje->hora_salida }}</td>
                         <td class="border px-4 py-2 text-center">{{ $viaje->chofer->persona->nombre }}</td>

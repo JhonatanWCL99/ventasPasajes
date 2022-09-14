@@ -14,48 +14,73 @@
                         <div class="w-full md:w-1/2 px-5">
                             <div class="form-group">
                                 <label class="tracking-wide text-black text-xs font-bold mb-2" for="fecha_actual">Fecha Salida</label>
-                                <input type="date" name="fecha_salida" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
+                                <input type="date" name="fecha_salida" @error('fecha_salida') is-invalid @enderror class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
+                                @error('fecha_salida')
+                                <span class="invalid-feedback " style="color: red" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="w-full md:w-1/2 px-5">
                             <div class="form-group">
                                 <label class="tracking-wide text-black text-xs font-bold mb-2" for="hora_salida">Hora Salida</label>
-                                <input type="time" name="hora_salida" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
+                                <input type="time" name="hora_salida" @error('hora_salida') is-invalid @enderror class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3">
+                                @error('hora_salida')
+                                <span class="invalid-feedback" style="color: red" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 px-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ruta">
                                 Seleccione la Ruta
                             </label>
-                            <select name="ruta" id="ruta" class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="ruta" id="ruta" @error('ruta') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                 <option value="">Seleccione una Ruta</option>
                                 @foreach($rutas as $ruta)
                                 <option value="{{$ruta->id}}">{{ $ruta->lugar_origen }} - {{$ruta->lugar_llegada}}</option>
                                 @endforeach
                             </select>
+                            @error('ruta')
+                            <span class="invalid-feedback" style="color: red" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="w-full md:w-1/2 px-5 mb-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="chofer">
                                 Chofer
                             </label>
-                            <select name="chofer" id="chofer" class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="chofer" id="chofer"  @error('chofer') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                 <option value="">Elige un Chofer</option>
                                 @foreach($choferes as $chofer)
                                 <option value="{{$chofer->id}}">{{ $chofer->persona->nombre}}</option>
                                 @endforeach
                             </select>
+                            @error('chofer')
+                            <span class="invalid-feedback" style="color: red" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="w-full md:w-1/2 px-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="chofer">
                                 Buses
                             </label>
-                            <select name="bus" id="bus" class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="bus" id="bus" @error('bus') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                 <option value="">Elige un Bus</option>
                                 @foreach($buses as $bus)
                                 <option value="{{$bus->id}}">{{ $bus->marca }} - {{$bus->modelo}}</option>
                                 @endforeach
                             </select>
+                            @error('bus')
+                            <span class="invalid-feedback" style="color: red" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="-mx-3 md:flex mt-4 justify-center text-center mb-4">

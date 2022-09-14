@@ -15,7 +15,7 @@
                         <div class="w-full md:w-1/2 px-5">
                             <div class="form-group">
                                 <label class="tracking-wide text-black text-xs font-bold mb-2" for="fecha_actual">Fecha Salida</label>
-                                <input type="date" name="fecha_salida" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" value="{{$viaje->fecha_salida}}">
+                                <input type="date" name="fecha_salida" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" value="{{$viaje->fecha_salida}}" required>
                             </div>
                         </div>
 
@@ -29,7 +29,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ruta">
                                 Seleccione la Ruta
                             </label>
-                            <select name="ruta" id="ruta" class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="ruta" id="ruta"  @error('ruta') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
                                 <option value="">Seleccione una Ruta</option>
                                 @foreach($rutas as $ruta)
                                 @if($ruta->id==$viaje->ruta_id)
@@ -39,12 +39,17 @@
                                 @endif
                                 @endforeach
                             </select>
+                            @error('ruta')
+                            <span class="invalid-feedback" style="color: red" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="w-full md:w-1/2 px-5 mb-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="chofer">
                                 Chofer
                             </label>
-                            <select name="chofer" id="chofer" class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="chofer" id="chofer" @error('chofer') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
                                 <option value="">Elige un Chofer</option>
                                 @foreach($choferes as $chofer)
                                 @if($chofer->id==$viaje->chofer_id)
@@ -54,12 +59,17 @@
                                 @endif
                                 @endforeach
                             </select>
+                            @error('chofer')
+                            <span class="invalid-feedback" style="color: red" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="w-full md:w-1/2 px-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="chofer">
                                 Buses
                             </label>
-                            <select name="bus" id="bus" class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="bus" id="bus" @error('bus') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                 <option value="">Elige un Bus</option>
                                 @foreach($buses as $bus)
                                 @if($bus->id == $viaje->bus_id)
@@ -69,6 +79,11 @@
                                 @endif
                                 @endforeach
                             </select>
+                            @error('bus')
+                            <span class="invalid-feedback" style="color: red" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="-mx-3 md:flex mt-4 justify-center text-center mb-4">

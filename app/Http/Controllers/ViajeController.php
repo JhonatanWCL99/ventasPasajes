@@ -140,4 +140,27 @@ class ViajeController extends Controller
 
         return redirect()->route('viajes.index');
     }
+
+    public function reporteViajes(Request $request){
+
+        $fecha_inicial = $request->fecha_inicial;
+        $fecha_final = $request->fecha_final;
+        $ruta_llegada = $request->lugar_llegada;
+
+        $rutas = Ruta::selectRaw('rutas.id,rutas.lugar_llegada')->where('rutas.lugar_llegada','Santa Cruz')->get();
+
+
+        $viajes = Viaje::selectRaw('viajes.fecha_salida,viajes.hora_salida,personas.nombre,personas.apellido,choferes.licencia_conducir')
+        ->join('choferes','choferes.id','=','viajes.chofer_id')
+        ->join('personas','personas.id','=','choferes.persona_id')
+        ->join('rutas','rutas.id','=','viajes.ruta_id')
+        ->wherebetween('viajes.fecha_salida',[$fecha_inicial, $fecha_final])
+        ->where('rutas.id',$rutas[0]->id)
+        ->where('viajes.estado','E')
+        ->get();
+
+
+
+        return view('viajes.reportes.ReporteViajes',compact('viajes','rutas'));
+    }
 }

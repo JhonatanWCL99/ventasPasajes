@@ -4,10 +4,11 @@
             Listado de Viajes
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="w-full mx-auto py-10 sm:px-6 lg:px-8">
             <div class="bg-white px-4 py-4">
-                <a class="px-8 py-2 bg-gray-300 hover:bg-gray-400 rounded-full" href="{{ route('viajes.create') }}"> Nuevo Viaje</a>
+                <a class="btn px-8 py-2 bg-gray-300 hover:bg-gray-400 rounded-full" href="{{ route('viajes.create') }}"> Nuevo Viaje</a>
                 <br><br>
                 <table class="table-auto w-full my-3 divide-y divide-gray-200">
                     <tr class="bg-gray-100">

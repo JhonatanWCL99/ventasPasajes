@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Bus;
 use App\Models\Chofer;
 use App\Models\Ruta;
+use App\Models\Venta;
 use App\Models\Viaje;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ViajeController extends Controller
@@ -167,10 +169,39 @@ class ViajeController extends Controller
         ->get();
         /* dd($viajes); */
 
-        return view('viajes.reportes.ReporteViajes',compact('viajes','rutas'));
+        return view('viajes.reportes.ReporteViajes',compact('viajes','rutas','fecha_inicial_formatada','fecha_final_formatada'));
     }
 
-    public function detalleReporteViaje(){
+    public function detalleReporteViaje($viaje_id, $fecha_inicial_formatada,$fecha_final_formatada){
+
+        $asientos_reservados = Venta::selectRaw('asientos.id,asientos.color,asientos.numero_asiento,asientos.estado')
+        ->join('detalles_venta','detalles_venta.venta_id','=','ventas_pasajes.id')
+        ->join('viajes','viajes.id','=','detalles_venta.viaje_id')
+        ->join('buses','buses.id','=','viajes.bus_id')
+        ->join('asientos','asientos.bus_id','=','buses.id')
+        ->where('detalles_venta.viaje_id',$viaje_id)
+        ->get();
+
+
+        $ventas_viajes = Venta::selectRaw('ventas_pasajes.id,detalles_venta.viaje_id,personas.nombre,personas.apellido,ventas_pasajes.fecha_venta,
+        ventas_pasajes.total,detalles_venta.cantidad,viajes.precio_asiento,buses.marca,buses.modelo,buses.cantidad_max_asientos,users.name,users.email')
+        ->join('detalles_venta','detalles_venta.venta_id','=','ventas_pasajes.id')
+        ->join('viajes','viajes.id','=','detalles_venta.viaje_id')
+        ->join('users','users.id','=','ventas_pasajes.user_id')
+        ->join('pasajeros','pasajeros.id','=','ventas_pasajes.pasajero_id')
+        ->join('personas','personas.id','=','pasajeros.persona_id')
+        ->join('buses','buses.id','=','viajes.bus_id')
+        ->where('detalles_venta.viaje_id',$viaje_id)
+        ->whereBetween('ventas_pasajes.fecha_venta',[$fecha_inicial_formatada,$fecha_final_formatada])
+        ->where('ventas_pasajes.user_id',Auth::user()->id)
+        ->get();
+        /* dd($ventas_viajes); */
+
+
+
+
+
+        return view('viajes.reportes.detalleReporteViaje', compact('ventas_viajes','asientos_reservados'));
 
     }
 }

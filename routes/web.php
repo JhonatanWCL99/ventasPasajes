@@ -42,6 +42,7 @@ Route::put('/viajes/{id}', [App\Http\Controllers\ViajeController::class, 'update
 Route::delete('/viajes/{id}', [\App\Http\Controllers\ViajeController::class, 'destroy'])->name('viajes.destroy');
 Route::get('/viajes/show/{id}', [App\Http\Controllers\ViajeController::class, 'show'])->name('viajes.show');
 Route::get('viajes/reporteViajes', [App\Http\Controllers\ViajeController::class, 'reporteViajes'])->name('viajes.reporteViajes');
+Route::get('viajes/detalleReporteViaje/{viaje_id}/{fecha_inicial_formatada}/{fecha_final_formatada}', [App\Http\Controllers\ViajeController::class, 'detalleReporteViaje'])->name('viajes.detalleReporteViaje');
 
 
 Route::resource('choferes',ChoferController::class);

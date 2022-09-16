@@ -17,6 +17,7 @@ class CreateChoferesTable extends Migration
             $table->id();
             $table->integer('licencia_conducir');
             $table->date('fecha_caducidad');
+            $table->char('estado');
             $table->unsignedBigInteger('persona_id');
 
             $table->foreign('persona_id')->on('personas')->references('id')->onDelete('cascade');

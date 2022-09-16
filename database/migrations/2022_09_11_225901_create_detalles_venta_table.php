@@ -21,7 +21,7 @@ class CreateDetallesVentaTable extends Migration
             $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('viaje_id');
 
-            $table->foreign('venta_id')->on('ventas_pasajes')->references('id');
+            $table->foreign('venta_id')->on('ventas_pasajes')->references('id')->onDelete('cascade');
             $table->foreign('viaje_id')->on('viajes')->references('id');
             $table->timestamps();
         });

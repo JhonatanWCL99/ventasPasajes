@@ -117,6 +117,7 @@
 
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($asientos_reservados as $asiento_reservado)
+                        @if($asiento_reservado->estado == "R")
                         <tr>
                             <td>
                                 <div class="flex">
@@ -141,9 +142,12 @@
                             </td>
 
                             <td class="text-center">
-                                {{ $asiento_reservado->estado}}
+                                <p class="text-center text-2xl mt-2 ">
+                                    <i class="fas fa-credit-card bg-teal-600"></i>
+                                </p>
                              </td>
                         </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>

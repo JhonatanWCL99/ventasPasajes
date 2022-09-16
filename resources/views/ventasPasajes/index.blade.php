@@ -30,7 +30,7 @@
                         <td class="border px-4 py-2 text-center">
                             <div class="mt-2">
                                 <form action="{{ route('ventasPasajes.destroy',$venta->id) }}" method="POST">
-                                    <a class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-5 rounded " href="{{ route('ventasPasajes.edit',$venta->id) }}">Editar</a>
+                                    <a class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-5 rounded " href="{{ route('ventasPasajes.show',$venta->id) }}">Detalle</a>
                                     @csrf
                                     @method('Delete')
                                     <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>

@@ -18,6 +18,12 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <style>
+        body {
+            background-image: url('img/terminal.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body class="font-sans antialiased">

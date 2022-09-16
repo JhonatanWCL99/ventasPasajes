@@ -15,6 +15,7 @@ class CreateAsientosTable extends Migration
     {
         Schema::create('asientos', function (Blueprint $table) {
             $table->id();
+            $table->integer('numero_asiento');
             $table->string('color');
             $table->char('estado');
             $table->unsignedBigInteger('bus_id');

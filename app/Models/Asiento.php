@@ -11,9 +11,15 @@ class Asiento extends Model
 
     protected $table = 'asientos';
 
-    protected $fillable = ['color','estado','bus_id'];
+    protected $fillable = [
+        'color',
+        'numero_asiento',
+        'estado',
+        'bus_id'
+    ];
 
-    public function bus(){
+    public function bus()
+    {
         return $this->belongsTo(Bus::class);
     }
 }

@@ -11,15 +11,21 @@ class DetalleVenta extends Model
 
     protected $table = 'detalles_venta';
 
-    protected $fillable = ['cantidad','subtotal','venta_id','viaje_id'];
+    protected $fillable = [
+        'cantidad',
+        'subtotal',
+        'viaje_id',
+        'venta_id',
+    ];
 
 
-    public function venta(){
+    public function venta()
+    {
         return $this->belongsTo(Venta::class);
     }
 
-    public function viaje(){
+    public function viaje()
+    {
         return $this->belongsTo(Viaje::class);
     }
-
 }

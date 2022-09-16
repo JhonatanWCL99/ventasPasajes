@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('ventasPasajes.create') }}">
+                    <x-jet-nav-link href="{{ route('ventasPasajes.index') }}">
                         Gestion Ventas
                     </x-jet-nav-link>
                 </div>

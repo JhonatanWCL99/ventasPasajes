@@ -26,10 +26,16 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 px-5">
+                            <div class="form-group">
+                                <label class="tracking-wide text-black text-xs font-bold mb-2" for="precio_asiento">Precio Asiento</label>
+                                <input type="number" name="precio_asiento" class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" step="any" value="{{$viaje->precio_asiento}}">
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 px-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ruta">
                                 Seleccione la Ruta
                             </label>
-                            <select name="ruta" id="ruta"  @error('ruta') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
+                            <select name="ruta" id="ruta" @error('ruta') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
                                 <option value="">Seleccione una Ruta</option>
                                 @foreach($rutas as $ruta)
                                 @if($ruta->id==$viaje->ruta_id)

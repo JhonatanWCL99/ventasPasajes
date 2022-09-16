@@ -47,3 +47,5 @@ Route::get('viajes/reporteViajes', [App\Http\Controllers\ViajeController::class,
 Route::resource('choferes',ChoferController::class);
 Route::resource('asistentes',AsistenteController::class);
 
+Route::post('/ventasPasajes/obtenerDatoViaje',[VentaPasajeController::class,'obtenerDatoViaje'])->name('ventasPasajes.obtenerDatosViaje');
+

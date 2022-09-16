@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
     <!-- Styles -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>

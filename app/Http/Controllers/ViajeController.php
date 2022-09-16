@@ -50,7 +50,8 @@ class ViajeController extends Controller
             'hora_salida' => 'required',
             'chofer' =>'required',
             'bus' =>'required',
-            'ruta' =>'required'
+            'ruta' =>'required',
+            'precio_asiento' =>'required',
         ];
 
         $messages =[
@@ -59,6 +60,7 @@ class ViajeController extends Controller
             'chofer.required' => 'Debe seleccionar un Chofer',
             'bus.required' => 'Debe seleccionar un Bus',
             'ruta.required' => 'Debe seleccionar una Ruta',
+            'precio_asiento.required' => 'Debe colocar un precio',
         ];
 
         $this->validate($request, $rules, $messages);
@@ -67,6 +69,7 @@ class ViajeController extends Controller
         $viaje->fecha_salida = $request->fecha_salida;
         $viaje->hora_salida = $request->hora_salida;
         $viaje->estado = 'E'; //E = En espera , V = En Proceso de Viaje , C = Viaje Concluido
+        $viaje->precio_asiento =  $request->precio_asiento;
         $viaje->chofer_id =  $request->chofer;
         $viaje->bus_id =  $request->bus;
         $viaje->ruta_id =  $request->ruta;

@@ -35,6 +35,17 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 px-5">
+                            <div class="form-group">
+                                <label class="tracking-wide text-black text-xs font-bold mb-2" for="precio_asiento">Precio Asiento</label>
+                                <input type="number" name="precio_asiento" @error('precio_asiento') is-invalid @enderror class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" step="any" placeholder="Precio por asiento...">
+                                @error('precio_asiento')
+                                <span class="invalid-feedback" style="color: red" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 px-5">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ruta">
                                 Seleccione la Ruta
                             </label>
@@ -54,7 +65,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="chofer">
                                 Chofer
                             </label>
-                            <select name="chofer" id="chofer"  @error('chofer') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                            <select name="chofer" id="chofer" @error('chofer') is-invalid @enderror class="form-select appearance-none block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                                 <option value="">Elige un Chofer</option>
                                 @foreach($choferes as $chofer)
                                 <option value="{{$chofer->id}}">{{ $chofer->persona->nombre}}</option>

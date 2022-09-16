@@ -19,6 +19,7 @@ class CreateViajesTable extends Migration
             $table->time('hora_salida');
 
             $table->char('estado');
+            $table->decimal('precio_asiento',12,4);
 
             $table->unsignedBigInteger('chofer_id');
             $table->unsignedBigInteger('bus_id');

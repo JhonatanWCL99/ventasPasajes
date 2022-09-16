@@ -60,8 +60,11 @@
                 </form>
             </div>
         </div>
-        <div class="w-full mx-auto py-4 sm:px-6 lg:px-4 bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
-            <p class="text-xl font-semibold mb-4">VIAJES: </p>
+
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
+            <p class="text-xl font-semibold mb-4 m-auto">VIAJES </p>
+
             <table class="table-fixed w-full  ">
                 <thead>
                     <tr>
@@ -75,29 +78,8 @@
                     </tr>
                 </thead>
 
-<<<<<<< HEAD
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($viajes as $viaje)
-=======
-    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
-        <p class="text-xl font-semibold mb-4">VIAJES: </p>
-
-        <table class="table-fixed w-full  ">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Ruta Llegada</th>
-                    <th>Fecha Salida</th>
-                    <th>Hora Salida</th>
-                    <th>Nombre Conductor </th>
-                    <th>Licencia Conducir </th>
-                    <th>Detalle </th>
-                </tr>
-            </thead>
-
-            <tbody class="divide-y divide-gray-200">
-                @foreach ($viajes as $viaje)
->>>>>>> b475bbe0b93daa0b2220f917f32e3f7f6bf215ad
                     <tr>
                         <td class="text-center">
                             {{ $viaje->id }}
@@ -122,10 +104,10 @@
                             {{ $viaje->licencia_conducir}}
                         </td>
 
-                        <td class="border px-4 " >
-                            <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path  stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                              </svg>
+                        <td class="border px-4 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                            </svg>
                             <a href="{{ route('viajes.edit',$viaje->id) }}">Detalle</a>
 
 

@@ -147,7 +147,7 @@ class ViajeController extends Controller
     }
 
     public function reporteViajes(Request $request){
-
+        /* dd($request); */
         $fecha_inicial = $request->fecha_inicial;
         $fecha_final = $request->fecha_final;
         $ruta_llegada = $request->lugar_llegada;

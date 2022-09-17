@@ -81,6 +81,11 @@ class VentaPasajeController extends Controller
         ]);
     }
 
+    public function show($id){
+        $venta = Venta::find($id);
+        return view('ventasPasajes.show', compact('venta'));
+    }
+
     public function destroy($id)
     {
         Venta::destroy($id);

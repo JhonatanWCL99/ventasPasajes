@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chofer;
+use App\Models\Persona;
 use Illuminate\Http\Request;
 
 class ChoferController extends Controller
@@ -58,7 +59,9 @@ class ChoferController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chofer = Chofer::find($id);
+
+        return view('choferes.edit', compact('chofer'));
     }
 
     /**
@@ -70,7 +73,19 @@ class ChoferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $chofer = Chofer::find($id);
+        $persona = Persona::find($chofer->persona_id);
+
+        $persona->nombre = $request->chofer_nombre;
+        $persona->apellido = $request->chofer_apellido;
+
+        $chofer->licencia_conducir = $request->licencia_conducir;
+        $chofer->fecha_caducidad = $request->fecha_caducidad;
+
+        $persona->save();
+        $chofer->save();
+
+        return redirect()->route('choferes.index');
     }
 
     /**

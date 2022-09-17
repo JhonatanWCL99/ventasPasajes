@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Bus;
 use App\Models\Chofer;
+use App\Models\DetalleVenta;
 use App\Models\Ruta;
 use App\Models\Venta;
 use App\Models\Viaje;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ViajeController extends Controller
 {
@@ -156,7 +158,8 @@ class ViajeController extends Controller
         $fecha_final_formatada = (new Carbon($fecha_final))->format('Y-m-d');
 
 
-        $rutas = Ruta::selectRaw('rutas.id,rutas.lugar_llegada')->where('rutas.lugar_llegada','Santa Cruz')->get();
+        $rutas = Ruta::all();
+
 
 
         $viajes = Viaje::selectRaw('viajes.id,rutas.lugar_llegada,viajes.fecha_salida,viajes.hora_salida,personas.nombre,personas.apellido,choferes.licencia_conducir')
@@ -197,11 +200,10 @@ class ViajeController extends Controller
         ->get();
         /* dd($ventas_viajes); */
 
-
-
-
-
         return view('viajes.reportes.detalleReporteViaje', compact('ventas_viajes','asientos_reservados'));
 
     }
+
+
+
 }

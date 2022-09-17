@@ -44,6 +44,7 @@ Route::get('/viajes/show/{id}', [App\Http\Controllers\ViajeController::class, 's
 Route::get('viajes/reporteViajes', [App\Http\Controllers\ViajeController::class, 'reporteViajes'])->name('viajes.reporteViajes');
 Route::get('viajes/detalleReporteViaje/{viaje_id}/{fecha_inicial_formatada}/{fecha_final_formatada}', [App\Http\Controllers\ViajeController::class, 'detalleReporteViaje'])->name('viajes.detalleReporteViaje');
 Route::get('viajes/detalleReporteViaje-PDF/{viaje_id}/{fecha_inicial_formatada}/{fecha_final_formatada}', [App\Http\Controllers\ViajeController::class, 'detalleReporteViajePDF'])->name('viajes.detalleReporteViajePDF');
+Route::get('viajes/updateState/{id}', [App\Http\Controllers\ViajeController::class, 'updateState'])->name('viajes.updateState');
 
 
 Route::resource('choferes',ChoferController::class);

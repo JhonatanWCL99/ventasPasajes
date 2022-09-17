@@ -45,6 +45,7 @@
                         <td class="border px-4 py-2 text-center">
                             <div class="mt-2">
                                 <form action="{{ route('viajes.destroy',$viaje->id) }}" method="POST">
+                                    <a class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-5 rounded " href="{{ route('viajes.updateState',$viaje->id) }}">Cambiar Estado</a>
                                     <a class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-5 rounded " href="{{ route('viajes.edit',$viaje->id) }}">Editar</a>
                                     @csrf
                                     @method('Delete')

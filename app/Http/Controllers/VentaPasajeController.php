@@ -25,7 +25,9 @@ class VentaPasajeController extends Controller
     {
 
         $pasajeros = Pasajero::all();
-        $viajes = Viaje::all();
+        $viajes = Viaje::where([
+            'estado' => 'E',
+        ])->get();
         $fecha_actual = Carbon::now()->toDateString();
         $hora_actual = Carbon::now()->toTimeString();
         return view('ventasPasajes.create', compact('pasajeros', 'viajes', 'fecha_actual', 'hora_actual'));
@@ -36,7 +38,7 @@ class VentaPasajeController extends Controller
 
         $viaje = Viaje::find($request->viaje);
 
-
+       /*  dd($request); */
         $venta = new Venta();
         $venta->fecha_venta = Carbon::now();
         $venta->hora_venta = Carbon::now()->toTimeString();
@@ -81,7 +83,8 @@ class VentaPasajeController extends Controller
         ]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $venta = Venta::find($id);
         return view('ventasPasajes.show', compact('venta'));
     }

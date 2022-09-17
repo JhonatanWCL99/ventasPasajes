@@ -61,16 +61,6 @@
             <div>
                 <p class="text-lg font-semibold uppercase">Detalle del Viaje</p>
                 <tr>
-                    <th> Nombre Pasajero</th>
-                    <td>{{ $ventas_viajes[0]->nombre}} {{$ventas_viajes[0]->apellido}}</td>
-                </tr> <br>
-
-                <tr>
-                    <th> Tickets Comprados</th>
-                    <td>{{ $ventas_viajes[0]->cantidad}} </td>
-                </tr><br>
-
-                <tr>
                     <th>Precio Ticket:</th>
                     <td>{{ $ventas_viajes[0]->precio_asiento}} </td>
                 </tr><br>
@@ -103,14 +93,12 @@
         </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
+    <!--   <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
         <p class="text-xl font-semibold mb-4">Asientos Reservados</p>
 
         <table class="table-auto w-full">
             <thead>
                 <tr>
-                    <!--  <th></th>
- -->
                     <th>Nombre del Pasajero</th>
                     <th>Nro Asiento</th>
                     <th>Color</th>
@@ -143,12 +131,12 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+    </div> -->
 
 
 
 
-    </div>
+
 
 
 </x-app-layout>

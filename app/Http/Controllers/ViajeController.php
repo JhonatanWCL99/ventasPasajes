@@ -15,6 +15,28 @@ use Illuminate\Support\Facades\Auth;
 
 class ViajeController extends Controller
 {
+    public function updateState($id)
+    {
+        $viaje = Viaje::find($id);
+
+        if ($viaje->estado == "E") {
+            $viaje->estado = "P";
+            $viaje->save();
+            return redirect()->route('viajes.index');
+        }
+
+        if ($viaje->estado == "P") {
+            $viaje->estado = "C";
+            $viaje->save();
+            return redirect()->route('viajes.index');
+        }
+
+        if ($viaje->estado == "C") {
+            return redirect()->route('viajes.index');
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -167,7 +189,6 @@ class ViajeController extends Controller
             ->join('rutas', 'rutas.id', '=', 'viajes.ruta_id')
             ->wherebetween('viajes.fecha_salida', [$fecha_inicial_formatada, $fecha_final_formatada])
             ->where('rutas.id', $ruta_llegada)
-            ->where('viajes.estado', 'E')
             ->get();
         /*   */
 
@@ -188,9 +209,9 @@ class ViajeController extends Controller
             ->whereBetween('ventas_pasajes.fecha_venta', [$fecha_inicial_formatada, $fecha_final_formatada])
             ->where('ventas_pasajes.user_id', Auth::user()->id)
             ->get();
-
+       /*  dd($ventas_viajes); */
         $viaje = Viaje::find($ventas_viajes[0]->viaje_id);
-        
+
 
         $asientos_reservados = Venta::selectRaw('asientos.id,asientos.color,asientos.numero_asiento,asientos.estado,personas.nombre as nombrePasajero')
             ->join('pasajeros', 'pasajeros.id', '=', 'ventas_pasajes.pasajero_id')
@@ -201,22 +222,11 @@ class ViajeController extends Controller
             ->join('asientos', 'asientos.bus_id', '=', 'buses.id')
             ->where('detalles_venta.viaje_id', $viaje_id)
             ->where('asientos.estado', 'R')
+            ->whereBetween('ventas_pasajes.fecha_venta', [$fecha_inicial_formatada, $fecha_final_formatada])
             /* ->where('pasajeros.id', $ventas_viajes[0]->pasajero_id) */
             ->get();
 
-<<<<<<< HEAD
-
-
-
-
-        /* dd($asientos_reservados); */
-=======
-        return view('viajes.reportes.detalleReporteViaje', compact('ventas_viajes','asientos_reservados'));
->>>>>>> 091b50b4133a7f5511969f25a1360f416291bb89
-
-        return view('viajes.reportes.detalleReporteViaje', compact('viaje_id', 'fecha_inicial_formatada', 'fecha_final_formatada', 'ventas_viajes', 'asientos_reservados', 'viaje'));
-    }
-
+       /*  dd($asientos_reservados); */
 
 
 
@@ -224,6 +234,7 @@ class ViajeController extends Controller
 
         return view('viajes.reportes.detalleReporteViaje', compact('viaje_id', 'fecha_inicial_formatada', 'fecha_final_formatada', 'ventas_viajes', 'asientos_reservados', 'viaje'));
     }
+
 
     public function detalleReporteViajePDF($viaje_id, $fecha_inicial_formatada, $fecha_final_formatada)
     {
@@ -241,7 +252,7 @@ class ViajeController extends Controller
             ->get();
 
         $viaje = Viaje::find($ventas_viajes[0]->viaje_id);
-        
+
 
         $asientos_reservados = Venta::selectRaw('asientos.id,asientos.color,asientos.numero_asiento,asientos.estado,personas.nombre as nombrePasajero')
             ->join('pasajeros', 'pasajeros.id', '=', 'ventas_pasajes.pasajero_id')
@@ -251,6 +262,7 @@ class ViajeController extends Controller
             ->join('buses', 'buses.id', '=', 'viajes.bus_id')
             ->join('asientos', 'asientos.bus_id', '=', 'buses.id')
             ->where('detalles_venta.viaje_id', $viaje_id)
+            ->whereBetween('ventas_pasajes.fecha_venta', [$fecha_inicial_formatada, $fecha_final_formatada])
             ->where('asientos.estado', 'R')
             /* ->where('pasajeros.id', $ventas_viajes[0]->pasajero_id) */
             ->get();

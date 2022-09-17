@@ -59,12 +59,12 @@
         <h2>Reporte de Total Ventas Viaje Por Pasajero </h2>
     </div>
     <div class="cabecera">
-        <div class="content">
-            <h5 class="card-title">Detalle del Viaje ---------------------------------------------------------------------- Datos del Viaje</h5>
-            <p class="card-text">Nombre del Pasajero : {{ $ventas_viajes[0]->nombre}} {{$ventas_viajes[0]->apellido}} --------------------- Fecha Venta: {{ $ventas_viajes[0]->fecha_venta}} </p>
-            <p class="card-text"> Tickets Comprados : {{ $ventas_viajes[0]->cantidad}} ------------------------------------------- Ruta del Viaje : {{ $viaje->ruta->lugar_origen }} - {{ $viaje->ruta->lugar_llegada }} </p>
-            <p class="card-text"> Precio Ticket :{{ $ventas_viajes[0]->precio_asiento}} </p>
-            <p class="card-text"> Monto Total :{{ $ventas_viajes[0]->total}} </p>
+        <div class="content" style="text-align: center;">
+            <h5 class="card-title">Datos del Viaje</h5>
+            <p class="card-text">Fecha Venta: {{ $ventas_viajes[0]->fecha_venta}} </p>
+            <p class="card-text">Ruta del Viaje : {{ $viaje->ruta->lugar_origen }} - {{ $viaje->ruta->lugar_llegada }} </p>
+            <p class="card-text">Precio Ticket :{{ $ventas_viajes[0]->precio_asiento}} </p>
+            <p class="card-text">Monto Total :{{ $ventas_viajes[0]->total}} </p>
         
         </div>
         <div class="content">
@@ -73,7 +73,7 @@
             <p class="card-text">Cantidad Maxima de asientos: {{ $ventas_viajes[0]->cantidad_max_asientos }} -------------------------------- Email Vendedor:{{ $ventas_viajes[0]->email }}</p>
         </div>
     </div>
-    <div class="card">
+    <!-- <div class="card">
         <div style="text-align: center;">
             <h2>Asientos Reservados</h2>
         </div>
@@ -95,5 +95,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 </body>

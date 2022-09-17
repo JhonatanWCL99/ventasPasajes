@@ -98,12 +98,13 @@
                         </select>
                     </div>
                 </div>
+                <input type="hidden" id="pasajero" name="pasajero">
                 <div class="px-6 py-4 m:auto">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3" id="button">
                         Registrar Venta
                     </button>
                 </div>
-                <input type="hidden" id="pasajero" name="pasajero">
+                
             </form>
         </div>
     </div>
@@ -123,6 +124,9 @@
         let precio_asiento = document.getElementById("precio_asiento");
         let asientosSelect = document.getElementById("select-asiento")
         let pasajeroSelect = document.getElementById("pasajeroSelect")
+        pasajeroSelect.addEventListener("change",(e)=> {
+            pasajero.value = e.target.value;
+        })
         viaje.addEventListener('change', (e) => {
             fetch(rutaObtenerDatos, {
                     method: "POST",

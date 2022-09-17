@@ -41,7 +41,7 @@
                             <select name="lugar_llegada" id="ruta" @error('ruta') is-invalid @enderror class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 px-40 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="">Seleccione una Ruta</option>
                                 @foreach($rutas as $ruta)
-                                <option value="{{$ruta->id}}">{{$ruta->lugar_llegada}}</option>
+                                <option value="{{$ruta->id}}">{{$ruta->lugar_origen}} - {{$ruta->lugar_llegada}} </option>
                                 @endforeach
                             </select>
                             @error('ruta')

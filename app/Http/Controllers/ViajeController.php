@@ -204,6 +204,18 @@ class ViajeController extends Controller
             /* ->where('pasajeros.id', $ventas_viajes[0]->pasajero_id) */
             ->get();
 
+<<<<<<< HEAD
+
+
+
+
+        /* dd($asientos_reservados); */
+=======
+        return view('viajes.reportes.detalleReporteViaje', compact('ventas_viajes','asientos_reservados'));
+>>>>>>> 091b50b4133a7f5511969f25a1360f416291bb89
+
+        return view('viajes.reportes.detalleReporteViaje', compact('viaje_id', 'fecha_inicial_formatada', 'fecha_final_formatada', 'ventas_viajes', 'asientos_reservados', 'viaje'));
+    }
 
 
 

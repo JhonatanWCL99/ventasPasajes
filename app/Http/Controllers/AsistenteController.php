@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Persona;
 use App\Models\Asistente;
 use Illuminate\Http\Request;
 
@@ -58,7 +58,9 @@ class AsistenteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $asistente = Asistente::find($id);
+
+        return view('asistentes.edit', compact('asistente'));
     }
 
     /**
@@ -70,7 +72,17 @@ class AsistenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $asistente = Asistente::find($id);
+        $persona = Persona::find($asistente->persona_id);
+
+        $persona->nombre = $request->asistente_nombre;
+        $persona->apellido = $request->asistente_apellido;
+        $asistente->cargo = $request->cargo;
+
+        $persona->save();
+        $asistente->save();
+
+        return redirect()->route('asistentes.index');
     }
 
     /**
